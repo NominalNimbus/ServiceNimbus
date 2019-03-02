@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B008E28-8FCB-41A4-A6EC-976D671648E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Scripting</RootNamespace>
+    <AssemblyName>Scripting</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoundaryObject.cs" />
+    <Compile Include="Contract\IScripting.cs" />
+    <Compile Include="Contract\ISimulationBroker.cs" />
+    <Compile Include="Contract\SimulationAccount.cs" />
+    <Compile Include="Contract\SimulationBroker.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Contract\SignalBase.cs" />
+    <Compile Include="Contract\IBroker.cs" />
+    <Compile Include="Contract\IDataProvider.cs" />
+    <Compile Include="Contract\IndicatorBase.cs" />
+    <Compile Include="Contract\IndicatorBase_Helpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TechnicalIndicators\Bill Williams\AcceleratorOscillator.cs" />
+    <Compile Include="TechnicalIndicators\Volume\AccumulationDistribution.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\AverageDirectionalMovement .cs" />
+    <Compile Include="TechnicalIndicators\Bill Williams\Alligator.cs" />
+    <Compile Include="TechnicalIndicators\Bill Williams\AwesomeOscillator.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\AverageTrueRange.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\BollingerBands.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\BearsPower.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\BullsPower.cs" />
+    <Compile Include="TechnicalIndicators\Bill Williams\MarketFacilitationIndex.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\CommodityChannelIndex.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\ExponentialMovingAverage.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\Envelopes.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\ForceIndex.cs" />
+    <Compile Include="TechnicalIndicators\Bill Williams\Gator.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\LinearWeightedMovingAverage.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\MACD.cs" />
+    <Compile Include="TechnicalIndicators\Volume\MoneyFlowIndex.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\Momentum.cs" />
+    <Compile Include="TechnicalIndicators\Volume\OnBalanceVolume.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\MovingAverageOfOscillator.cs" />
+    <Compile Include="TechnicalIndicators\PL.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\RelativeStrengthIndex.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\RelativeVigorIndex.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\ParabolicSAR.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\SimpleMovingAverage.cs" />
+    <Compile Include="TechnicalIndicators\Trend Indicators\SmoothedMovingAverage .cs" />
+    <Compile Include="TechnicalIndicators\Channels\StandardDeviation.cs" />
+    <Compile Include="TechnicalIndicators\Oscillators\StochasticOscillator.cs" />
+    <Compile Include="TechnicalIndicators\Volume\Volume.cs" />
+    <Compile Include="TechnicalIndicators\WPercentRange.cs" />
+    <Compile Include="TechnicalIndicators\ZigZag.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Backtest\Backtest.csproj">
+      <Project>{575B110E-0C5A-4272-A8F9-8152ED517607}</Project>
+      <Name>Backtest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonObjects\CommonObjects.csproj">
+      <Project>{62c2b220-0d80-481e-b9dd-c4571460941b}</Project>
+      <Name>CommonObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServerCommonObjects\ServerCommonObjects.csproj">
+      <Project>{93d517b3-3bb2-443b-a5ea-238a0b0acdd5}</Project>
+      <Name>ServerCommonObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

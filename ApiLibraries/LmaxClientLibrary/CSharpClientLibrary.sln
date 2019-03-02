@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{DDB0EC00-EE97-4CBE-BDE9-CAEC5296DFD6}") = "CSharpClientLibrary", "CSharpClientLibrary.csproj", "{302EAED3-14CB-4177-A592-E707A71F97CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{302EAED3-14CB-4177-A592-E707A71F97CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302EAED3-14CB-4177-A592-E707A71F97CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302EAED3-14CB-4177-A592-E707A71F97CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302EAED3-14CB-4177-A592-E707A71F97CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

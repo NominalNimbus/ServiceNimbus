@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+-->
+
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Drawing" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Drawing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Color">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="knownColor" type="xs:short" />
+      <xs:element name="name" nillable="true" type="xs:string" />
+      <xs:element name="state" type="xs:short" />
+      <xs:element name="value" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Color" nillable="true" type="tns:Color" />
+</xs:schema>

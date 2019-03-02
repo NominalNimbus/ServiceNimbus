@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC5546FA-4F27-4A57-ABE0-2691D1E8B51C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PoloniexAPI</RootNamespace>
+    <AssemblyName>PoloniexClientLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\PoloniexClientLibrary.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\..\Server\bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Server\bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Fleck, Version=0.13.0.57, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fleck.0.13.0.57\lib\net40\Fleck.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MsgPack, Version=0.6.0.0, Culture=neutral, PublicKeyToken=a2625990d5dc0167, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MsgPack.Cli.0.6.2\lib\net45\MsgPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Msgpack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Msgpack.0.1.10\lib\net45\Newtonsoft.Msgpack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SuperSocket.ClientEngine.Core.0.8.0.6\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Threading.Tasks.Dataflow.4.6.0\lib\netstandard1.1\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.0.0-rc3-24212-01\lib\netstandard1.1\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="SystemEx, Version=16.3.26.6, Culture=neutral, PublicKeyToken=b07f240bd4274843, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SystemEx.16.3.26.6\lib\net20\SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.1.2.4.20-beta\lib\net45\WampSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.Default.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.Default.Client.1.2.4.20-beta\lib\net45\WampSharp.Default.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.Default.Router, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.Default.Router.1.2.4.20-beta\lib\net45\WampSharp.Default.Router.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.Fleck, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.Fleck.1.2.4.20-beta\lib\net45\WampSharp.Fleck.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.NewtonsoftJson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.NewtonsoftJson.1.2.4.20-beta\lib\net45\WampSharp.NewtonsoftJson.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.NewtonsoftMsgpack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.NewtonsoftMsgpack.1.2.4.20-beta\lib\net45\WampSharp.NewtonsoftMsgpack.dll</HintPath>
+    </Reference>
+    <Reference Include="WampSharp.WebSocket4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WampSharp.WebSocket4Net.1.2.4.20-beta\lib\net45\WampSharp.WebSocket4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebSocket4Net.0.15.0-beta4\lib\net45\WebSocket4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="General\CurrencyPair.cs" />
+    <Compile Include="General\Enums.cs" />
+    <Compile Include="LiveTools\Live.cs" />
+    <Compile Include="LiveTools\MessageHelper.cs" />
+    <Compile Include="LiveTools\MessageIn.cs" />
+    <Compile Include="LiveTools\OrderBookItems.cs" />
+    <Compile Include="LiveTools\TickData.cs" />
+    <Compile Include="LiveTools\TrollboxMessage.cs" />
+    <Compile Include="LiveTools\WampSubscribers.cs" />
+    <Compile Include="LiveTools\LiveWebSocket.cs" />
+    <Compile Include="MarketTools\OrderBook.cs" />
+    <Compile Include="PoloniexClient.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="General\ApiWebClient.cs" />
+    <Compile Include="General\Authenticator.cs" />
+    <Compile Include="General\JsonResponse.cs" />
+    <Compile Include="MarketTools\Quote.cs" />
+    <Compile Include="MarketTools\ChartData.cs" />
+    <Compile Include="MarketTools\Markets.cs" />
+    <Compile Include="MarketTools\Trade.cs" />
+    <Compile Include="TradingTools\OrderTrade.cs" />
+    <Compile Include="TradingTools\Order.cs" />
+    <Compile Include="TradingTools\Position.cs" />
+    <Compile Include="TradingTools\Trade.cs" />
+    <Compile Include="TradingTools\Trading.cs" />
+    <Compile Include="WalletTools\AccountSummary.cs" />
+    <Compile Include="WalletTools\Balance.cs" />
+    <Compile Include="WalletTools\DepositWithdrawalList.cs" />
+    <Compile Include="WalletTools\GeneratedDepositAddress.cs" />
+    <Compile Include="WalletTools\Deposit.cs" />
+    <Compile Include="WalletTools\Wallet.cs" />
+    <Compile Include="WalletTools\Withdrawal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17A3F566-4A69-42B2-87C4-74911769F0CB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\BrokerListCommand.cs" />
+    <Compile Include="Commands\BrokerLoginCommand.cs" />
+    <Compile Include="Commands\BrokerLogoutCommand.cs" />
+    <Compile Include="Commands\CancelOrderCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\CreateSimulatedBrokerAccountCommand.cs" />
+    <Compile Include="Commands\DataFeedListCommand.cs" />
+    <Compile Include="Commands\GetAvailableDataFeedsCommand.cs" />
+    <Compile Include="Commands\GetAvailableSymbolsCommand.cs" />
+    <Compile Include="Commands\GetTickCommand.cs" />
+    <Compile Include="Commands\HistoryCommand.cs" />
+    <Compile Include="Commands\ModifyOrderCommand.cs" />
+    <Compile Include="Commands\OrdersHistoryCommand.cs" />
+    <Compile Include="Commands\PlaceOrderCommand.cs" />
+    <Compile Include="Commands\PortfolioActionCommand.cs" />
+    <Compile Include="Commands\Scripting\AddUserFilesCommand.cs" />
+    <Compile Include="Commands\Scripting\BacktestResultsCommand.cs" />
+    <Compile Include="Commands\Scripting\CreateUserIndicatorCommand.cs" />
+    <Compile Include="Commands\Scripting\CreateUserSignalCommand.cs" />
+    <Compile Include="Commands\Scripting\RemoveScriptingInstanceCommand.cs" />
+    <Compile Include="Commands\Scripting\RemoveUserFilesCommand.cs" />
+    <Compile Include="Commands\Scripting\SaveScriptingDataCommand.cs" />
+    <Compile Include="Commands\Scripting\ScriptingAlertCommand.cs" />
+    <Compile Include="Commands\Scripting\ScriptingCommand.cs" />
+    <Compile Include="Commands\Scripting\ScriptingReportCommand.cs" />
+    <Compile Include="Commands\Scripting\SeriesUpdatedCommand.cs" />
+    <Compile Include="Commands\Scripting\SignalActionCommand.cs" />
+    <Compile Include="Commands\Scripting\SignalDataCommand.cs" />
+    <Compile Include="Commands\Scripting\UpdateStrategyParamsCommand.cs" />
+    <Compile Include="Commands\SecuritiesListCommand.cs" />
+    <Compile Include="Commands\Services\BacktestReportCommand.cs" />
+    <Compile Include="Commands\Services\CancelAccountOrderCommand.cs" />
+    <Compile Include="Commands\Services\ClosePositionCommand.cs" />
+    <Compile Include="Commands\Services\GetAccountsCommand.cs" />
+    <Compile Include="Commands\Services\GetAvailableSecuritiesCommand.cs" />
+    <Compile Include="Commands\Services\GetBarsCommand.cs" />
+    <Compile Include="Commands\Services\GetOrderCommand.cs" />
+    <Compile Include="Commands\Services\GetOrdersCommand.cs" />
+    <Compile Include="Commands\Services\GetPortfoliosCommand.cs" />
+    <Compile Include="Commands\Services\GetPositionsCommand.cs" />
+    <Compile Include="Commands\Services\IndicatorStartedCommand.cs" />
+    <Compile Include="Commands\Services\ModifyAccountOrderCommand.cs" />
+    <Compile Include="Commands\Services\NewBacktestResultsCommand.cs" />
+    <Compile Include="Commands\Services\PlaceAccountOrderCommand.cs" />
+    <Compile Include="Commands\Services\SignalActionSettedCommand.cs" />
+    <Compile Include="Commands\Services\StartedSignalExecutionCommand.cs" />
+    <Compile Include="Commands\Services\ScriptingOutputCommand.cs" />
+    <Compile Include="Commands\SubscribeCommand.cs" />
+    <Compile Include="Commands\UnsubscribeCommand.cs" />
+    <Compile Include="Commands\UpdateUserInfoCommand.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="DataCache\HistoryBarCache.cs" />
+    <Compile Include="DataCache\HistoryDataMultiTimeframeCache.cs" />
+    <Compile Include="DataCache\HistoryDataStoreCache.cs" />
+    <Compile Include="Interfaces\IDataFeedWorker.cs" />
+    <Compile Include="Interfaces\IHistoryDataMultiTimeframeCache.cs" />
+    <Compile Include="Interfaces\IHistoryWorker.cs" />
+    <Compile Include="Interfaces\IPusher.cs" />
+    <Compile Include="Interfaces\IRealTimeWorker.cs" />
+    <Compile Include="Interfaces\IScriptingWorker.cs" />
+    <Compile Include="LastUse.cs" />
+    <Compile Include="MessageProcessor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues\QueuesBase.cs" />
+    <Compile Include="Queues\SignalQueues.cs" />
+    <Compile Include="Server.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataBaseConnection.set">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Server.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonObjects\CommonObjects.csproj">
+      <Project>{62C2B220-0D80-481E-B9DD-C4571460941B}</Project>
+      <Name>CommonObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerCommonObjects\ServerCommonObjects.csproj">
+      <Project>{93D517B3-3BB2-443B-A5EA-238A0B0ACDD5}</Project>
+      <Name>ServerCommonObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OMS\OMS.csproj">
+      <Project>{8b16b9c3-132b-4ac4-af81-b1a73b4196d9}</Project>
+      <Name>OMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PortfolioManager\PortfolioManager.csproj">
+      <Project>{79D9C500-9FCF-4B2C-8C41-A71016DBD319}</Project>
+      <Name>PortfolioManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scripting\ScriptingManager\ScriptingManager.csproj">
+      <Project>{8F022823-55B0-477F-A0AD-D276998992EC}</Project>
+      <Name>ScriptingManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

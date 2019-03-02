@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{93D517B3-3BB2-443B-A5EA-238A0B0ACDD5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServerCommonObjects</RootNamespace>
+    <AssemblyName>ServerCommonObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AbstractBroker.cs" />
+    <Compile Include="Classes\CodeBase.cs" />
+    <Compile Include="Classes\DbSignal.cs" />
+    <Compile Include="Classes\FileExtensions.cs" />
+    <Compile Include="Classes\Level1Subscribers.cs" />
+    <Compile Include="Classes\LocalConfigHelper.cs" />
+    <Compile Include="Classes\Logger.cs" />
+    <Compile Include="Classes\SetValue.cs" />
+    <Compile Include="Classes\Signal.cs" />
+    <Compile Include="Classes\Indicator.cs" />
+    <Compile Include="Classes\OrderEventArgs.cs" />
+    <Compile Include="Classes\SeriesForUpdate.cs" />
+    <Compile Include="Classes\UserAccount.cs" />
+    <Compile Include="Classes\ReportField.cs" />
+    <Compile Include="CommandType.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Classes\DataFeed.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="Enums\SignalAction.cs" />
+    <Compile Include="Enums\ScriptingType.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Interfaces\ICore.cs" />
+    <Compile Include="Interfaces\IDataCacheManager.cs" />
+    <Compile Include="Interfaces\IEntityStore.cs" />
+    <Compile Include="Interfaces\IFileManager.cs" />
+    <Compile Include="Interfaces\IHostCommand.cs" />
+    <Compile Include="Interfaces\IHostCommandManager.cs" />
+    <Compile Include="Interfaces\IMessageManager.cs" />
+    <Compile Include="Interfaces\IOMS.cs" />
+    <Compile Include="Interfaces\ISettingsManager.cs" />
+    <Compile Include="Interfaces\IWCFProcessorInfo.cs" />
+    <Compile Include="Managers\FileManager.cs" />
+    <Compile Include="Managers\JSONSettingsManager.cs" />
+    <Compile Include="QueuesHelper.cs" />
+    <Compile Include="Request\CreateSimulatedBrokerAccountRequest.cs" />
+    <Compile Include="Request\BrokersAvailableSecuritiesRequest.cs" />
+    <Compile Include="Enums\PortfolioAction.cs" />
+    <Compile Include="Request\UpdateUserInfoRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\GetAvailableDataFeedsRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\GetTickRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\GetValidSymbolsRequest.cs" />
+    <Compile Include="Request\LogoutRequest.cs" />
+    <Compile Include="Request\RequestType.cs" />
+    <Compile Include="Request\ScriptingProcessor\BacktestReportRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\BacktestResultsRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\CancelAccountOrderRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\ClosePositionRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetAccountsRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetAvailableSecuritiesRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetOrderRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetOrdersRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetPortfoliosRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\ModifyAccountOrderRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\PlaceAccountOrderRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\GetBarsRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\GetLastTickRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\Broker\GetPositionsRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\IndicatorStartedRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\SeriesUpdatedRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\SignalActionSettedRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\ScriptingAlertRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\SctiptingOutput.cs" />
+    <Compile Include="Response\CreateSimulatedBrokerAccountResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetAvailableDataFeedsResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetAvailableSymbolsResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetTickResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\RemoveIndicatorResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\StartIndicatorResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetAccountsResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetAvailableSecuritiesResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetBarsResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetLastTickResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetOrderResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetOrdersResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetPortfoliosResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\GetPositionsResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\NewBarResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\NewSingleTickResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\RegisterUCProcessorResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\SignalActionResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\StartSignalExecutionResponse.cs" />
+    <Compile Include="Response\ScriptingProcessor\StopSignalExecutionResponse.cs" />
+    <Compile Include="Request\ScriptingReportRequest.cs" />
+    <Compile Include="Request\PortfolioActionRequest.cs" />
+    <Compile Include="Request\TradingInfoRequest.cs" />
+    <Compile Include="Request\BrokersLoginRequest.cs" />
+    <Compile Include="Request\CancelOrderRequest.cs" />
+    <Compile Include="Request\GetDataFeedListRequest.cs" />
+    <Compile Include="Classes\ExchangeInfo.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="Interfaces\IBroker.cs" />
+    <Compile Include="Interfaces\IDataFeed.cs" />
+    <Compile Include="Request\BrokerLogoutRequest.cs" />
+    <Compile Include="Request\ModifyOrderRequest.cs" />
+    <Compile Include="Request\OrdersListRequest.cs" />
+    <Compile Include="Request\PlaceOrderRequest.cs" />
+    <Compile Include="Request\Scripting\RemoveUserFilesRequest.cs" />
+    <Compile Include="Request\Scripting\AddUserFilesRequest.cs" />
+    <Compile Include="Request\Scripting\CreateUserSignalRequest.cs" />
+    <Compile Include="Request\Scripting\CreateUserIndicatorRequest.cs" />
+    <Compile Include="Request\Scripting\RemoveScriptingInstanceRequest.cs" />
+    <Compile Include="Request\Scripting\BacktestResultsRequest.cs" />
+    <Compile Include="Request\Scripting\UpdateStrategyParamsRequest.cs" />
+    <Compile Include="Request\Scripting\SignalActionRequest.cs" />
+    <Compile Include="Request\Scripting\SignalDataRequest.cs" />
+    <Compile Include="Request\ScriptingProcessor\StartedSignalExecutionRequest.cs" />
+    <Compile Include="Response\ScriptingProcessor\UpdateSignalStrategyParamsResponse.cs" />
+    <Compile Include="Response\ScriptingReportResponse.cs" />
+    <Compile Include="Response\Scripting\BacktestReportMessage.cs" />
+    <Compile Include="Response\Scripting\SignalActionResponse.cs" />
+    <Compile Include="Request\Scripting\SaveScriptingDataRequest.cs" />
+    <Compile Include="Request\Scripting\ScriptingRequest.cs" />
+    <Compile Include="Response\AccountInfoChangedResponse.cs" />
+    <Compile Include="Response\BrokerLoginResponse.cs" />
+    <Compile Include="Response\BrokerLogoutResponse.cs" />
+    <Compile Include="Response\BrokersAvailableSecuritiesResponse.cs" />
+    <Compile Include="Response\HistoricalOrderResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingDataRemoveResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingDataSavedResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingExitResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingInstanceCreatedResponse.cs" />
+    <Compile Include="Response\Scripting\IndicatorSeriesUpdatedResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingInstanceRemovedResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingMessageResponse.cs" />
+    <Compile Include="Response\Scripting\SignalDataResponse.cs" />
+    <Compile Include="Response\Scripting\ScriptingOutput.cs" />
+    <Compile Include="Response\Scripting\ScriptingResponse.cs" />
+    <Compile Include="Response\OrderRejectionResponse.cs" />
+    <Compile Include="Response\PortfolioActionResponse.cs" />
+    <Compile Include="Response\PositionChangedResponse.cs" />
+    <Compile Include="Response\TradingInfoResponse.cs" />
+    <Compile Include="Response\GetDataFeedListResponse.cs" />
+    <Compile Include="Classes\TradingServerException.cs" />
+    <Compile Include="Response\ErrorMessageResponse.cs" />
+    <Compile Include="Response\HeartbeatResponse.cs" />
+    <Compile Include="Response\HistoryDataResponse.cs" />
+    <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Response\LogoutResponse.cs" />
+    <Compile Include="Response\TickDataResponse.cs" />
+    <Compile Include="Request\HeartbeatRequest.cs" />
+    <Compile Include="Request\HistoryDataRequest.cs" />
+    <Compile Include="Interfaces\ILogonControl.cs" />
+    <Compile Include="Interfaces\IUserInfo.cs" />
+    <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\RequestMessage.cs" />
+    <Compile Include="Request\SubscribeRequest.cs" />
+    <Compile Include="Classes\SymbolInfo.cs" />
+    <Compile Include="Request\UnsubscribeRequest.cs" />
+    <Compile Include="Response\HistoricalOrdersListResponse.cs" />
+    <Compile Include="Response\OrdersChangedResponse.cs" />
+    <Compile Include="Response\OrdersUpdatedResponse.cs" />
+    <Compile Include="Response\PositionUpdatedResponse.cs" />
+    <Compile Include="Response\ResponseMessage.cs" />
+    <Compile Include="ServerClasses\Authentication.cs" />
+    <Compile Include="ServerClasses\IServerServiceHost.cs" />
+    <Compile Include="ServerClasses\MessageRouter.cs" />
+    <Compile Include="SQL\DBConverters.cs" />
+    <Compile Include="SQL\DBMaintenance.cs" />
+    <Compile Include="SQL\DBSignals.cs" />
+    <Compile Include="SQL\DBSimulatedPositions.cs" />
+    <Compile Include="SQL\DBSimulatedAccounts.cs" />
+    <Compile Include="SQL\DBSimulatedSymbols.cs" />
+    <Compile Include="SQL\Level2Item.cs" />
+    <Compile Include="SQL\DBPortfolios.cs" />
+    <Compile Include="SQL\DBHistory.cs" />
+    <Compile Include="SQL\DBOrders.cs" />
+    <Compile Include="SQL\SimulatedSymbol.cs" />
+    <Compile Include="SQL\SqlBulkBarCopy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonObjects\CommonObjects.csproj">
+      <Project>{62c2b220-0d80-481e-b9dd-c4571460941b}</Project>
+      <Name>CommonObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+-->
+
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServerCommonObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/CommonObjects" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Enums" />
+  <xs:complexType name="LoginRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginRequest" nillable="true" type="tns:LoginRequest" />
+  <xs:complexType name="RequestMessage">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="RequestMessage" nillable="true" type="tns:RequestMessage" />
+  <xs:complexType name="DataFeedListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataFeedListRequest" nillable="true" type="tns:DataFeedListRequest" />
+  <xs:complexType name="SubscribeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Symbol" nillable="true" type="q1:Security" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SubscribeRequest" nillable="true" type="tns:SubscribeRequest" />
+  <xs:complexType name="UnsubscribeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Symbol" nillable="true" type="q2:Security" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UnsubscribeRequest" nillable="true" type="tns:UnsubscribeRequest" />
+  <xs:complexType name="HistoryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Selection" nillable="true" type="q3:Selection" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoryRequest" nillable="true" type="tns:HistoryRequest" />
+  <xs:complexType name="HeartbeatRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HeartbeatRequest" nillable="true" type="tns:HeartbeatRequest" />
+  <xs:complexType name="OrdersListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CountPerSymbol" type="xs:int" />
+          <xs:element minOccurs="0" name="Skip" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrdersListRequest" nillable="true" type="tns:OrdersListRequest" />
+  <xs:complexType name="PlaceOrderRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Order" nillable="true" type="q4:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlaceOrderRequest" nillable="true" type="tns:PlaceOrderRequest" />
+  <xs:complexType name="CancelOrderRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CancelOrderRequest" nillable="true" type="tns:CancelOrderRequest" />
+  <xs:complexType name="ModifyOrderRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsServerSide" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SL" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TP" nillable="true" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModifyOrderRequest" nillable="true" type="tns:ModifyOrderRequest" />
+  <xs:complexType name="TradingInfoRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TradingInfoRequest" nillable="true" type="tns:TradingInfoRequest" />
+  <xs:complexType name="BrokersLoginRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Accounts" nillable="true" type="q5:ArrayOfAccountInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokersLoginRequest" nillable="true" type="tns:BrokersLoginRequest" />
+  <xs:complexType name="BrokerLogoutRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Accounts" nillable="true" type="q6:ArrayOfAccountInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokerLogoutRequest" nillable="true" type="tns:BrokerLogoutRequest" />
+  <xs:simpleType name="PortfolioAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Add" />
+      <xs:enumeration value="Remove" />
+      <xs:enumeration value="Edit" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PortfolioAction" nillable="true" type="tns:PortfolioAction" />
+  <xs:complexType name="PortfolioActionRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" type="tns:PortfolioAction" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Portfolio" nillable="true" type="q7:Portfolio" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PortfolioActionRequest" nillable="true" type="tns:PortfolioActionRequest" />
+  <xs:complexType name="BrokersAvailableSecuritiesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Broker" nillable="true" type="q8:AccountInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokersAvailableSecuritiesRequest" nillable="true" type="tns:BrokersAvailableSecuritiesRequest" />
+  <xs:complexType name="AddUserFilesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZippedFiles" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserFilesRequest" nillable="true" type="tns:AddUserFilesRequest" />
+  <xs:complexType name="RemoveUserFilesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Paths" nillable="true" type="q9:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveUserFilesRequest" nillable="true" type="tns:RemoveUserFilesRequest" />
+  <xs:complexType name="ScriptingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingRequest" nillable="true" type="tns:ScriptingRequest" />
+  <xs:complexType name="CreateUserIndicatorRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Parameters" nillable="true" type="q10:ArrayOfCodeParameterBase" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="PriceType" type="q11:PriceType" />
+          <xs:element minOccurs="0" name="RequestID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Selection" nillable="true" type="q12:Selection" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateUserIndicatorRequest" nillable="true" type="tns:CreateUserIndicatorRequest" />
+  <xs:complexType name="CreateUserSignalRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="BacktestSettings" nillable="true" type="q13:BacktestSettings" />
+          <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Files" nillable="true" type="q14:ArrayOfKeyValueOfstringbase64Binary" />
+          <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="InitialState" type="q15:SignalState" />
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Parameters" nillable="true" type="q16:ArrayOfCodeParameterBase" />
+          <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Selections" nillable="true" type="q17:ArrayOfSelection" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="StrategyParameters" nillable="true" type="q18:StrategyParams" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateUserSignalRequest" nillable="true" type="tns:CreateUserSignalRequest" />
+  <xs:complexType name="SignalDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SignalDataRequest" nillable="true" type="tns:SignalDataRequest" />
+  <xs:complexType name="BacktestResultsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BacktestResultsRequest" nillable="true" type="tns:BacktestResultsRequest" />
+  <xs:complexType name="SaveScriptingDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Files" nillable="true" type="q19:ArrayOfKeyValueOfstringbase64Binary" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveScriptingDataRequest" nillable="true" type="tns:SaveScriptingDataRequest" />
+  <xs:simpleType name="ScriptingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Indicator" />
+      <xs:enumeration value="Signal" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ScriptingType" nillable="true" type="tns:ScriptingType" />
+  <xs:complexType name="SignalActionRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" type="tns:SignalAction" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SignalActionRequest" nillable="true" type="tns:SignalActionRequest" />
+  <xs:simpleType name="SignalAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="StopExecution" />
+      <xs:enumeration value="SetSimulatedOn" />
+      <xs:enumeration value="SetSimulatedOff">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PauseBacktest">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResumeBacktest">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SignalAction" nillable="true" type="tns:SignalAction" />
+  <xs:complexType name="UpdateStrategyParamsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Parameters" nillable="true" type="q20:StrategyParams" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateStrategyParamsRequest" nillable="true" type="tns:UpdateStrategyParamsRequest" />
+  <xs:complexType name="RemoveCodeInstanceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RemoveProject" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveCodeInstanceRequest" nillable="true" type="tns:RemoveCodeInstanceRequest" />
+  <xs:complexType name="ScriptingOutput">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Outputs" nillable="true" type="q21:ArrayOfOutput" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingOutput" nillable="true" type="tns:ScriptingOutput" />
+  <xs:complexType name="ResponseMessage">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ResponseMessage" nillable="true" type="tns:ResponseMessage" />
+  <xs:complexType name="DataFeedListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataFeeds" nillable="true" type="tns:ArrayOfDataFeed" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataFeedListResponse" nillable="true" type="tns:DataFeedListResponse" />
+  <xs:complexType name="ArrayOfDataFeed">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataFeed" nillable="true" type="tns:DataFeed" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataFeed" nillable="true" type="tns:ArrayOfDataFeed" />
+  <xs:complexType name="DataFeed">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsStarted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Symbols" nillable="true" type="q22:ArrayOfSecurity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataFeed" nillable="true" type="tns:DataFeed" />
+  <xs:complexType name="HistoryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Bars" nillable="true" type="q23:ArrayOfBar" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tail" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoryResponse" nillable="true" type="tns:HistoryResponse" />
+  <xs:complexType name="NewTickResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Tick" nillable="true" type="q24:ArrayOfTick" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NewTickResponse" nillable="true" type="tns:NewTickResponse" />
+  <xs:complexType name="HeartbeatResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HeartbeatResponse" nillable="true" type="tns:HeartbeatResponse" />
+  <xs:complexType name="ErrorInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ErrorInfo" nillable="true" type="tns:ErrorInfo" />
+  <xs:complexType name="AccountInfoChangedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Account" nillable="true" type="q25:AccountInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AccountInfoChangedResponse" nillable="true" type="tns:AccountInfoChangedResponse" />
+  <xs:complexType name="HistoricalOrdersListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="HistoricalOrders" nillable="true" type="q26:ArrayOfOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoricalOrdersListResponse" nillable="true" type="tns:HistoricalOrdersListResponse" />
+  <xs:complexType name="OrdersUpdatedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Orders" nillable="true" type="q27:ArrayOfOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrdersUpdatedResponse" nillable="true" type="tns:OrdersUpdatedResponse" />
+  <xs:complexType name="OrdersChangedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Orders" nillable="true" type="q28:ArrayOfOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrdersChangedResponse" nillable="true" type="tns:OrdersChangedResponse" />
+  <xs:complexType name="TradingInfoResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Brokers" nillable="true" type="q29:ArrayOfstring" />
+          <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Portfolios" nillable="true" type="q30:ArrayOfPortfolio" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TradingInfoResponse" nillable="true" type="tns:TradingInfoResponse" />
+  <xs:complexType name="BrokerLoginResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Accounts" nillable="true" type="q31:ArrayOfAccountInfo" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokerLoginResponse" nillable="true" type="tns:BrokerLoginResponse" />
+  <xs:complexType name="BrokersAvailableSecuritiesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BrokerId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Securities" nillable="true" type="q32:ArrayOfSecurity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokersAvailableSecuritiesResponse" nillable="true" type="tns:BrokersAvailableSecuritiesResponse" />
+  <xs:complexType name="PositionChangedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Positions" nillable="true" type="q33:ArrayOfPosition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PositionChangedResponse" nillable="true" type="tns:PositionChangedResponse" />
+  <xs:complexType name="BrokerLogoutResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BrokerLogoutResponse" nillable="true" type="tns:BrokerLogoutResponse" />
+  <xs:complexType name="PortfolioActionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" type="tns:PortfolioAction" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+          <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Portfolio" nillable="true" type="q34:Portfolio" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PortfolioActionResponse" nillable="true" type="tns:PortfolioActionResponse" />
+  <xs:complexType name="OrderRejectionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+          <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Order" nillable="true" type="q35:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderRejectionResponse" nillable="true" type="tns:OrderRejectionResponse" />
+  <xs:complexType name="PositionUpdatedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Position" nillable="true" type="q36:Position" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PositionUpdatedResponse" nillable="true" type="tns:PositionUpdatedResponse" />
+  <xs:complexType name="HistoricalOrderResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="HistoricalOrder" nillable="true" type="q37:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoricalOrderResponse" nillable="true" type="tns:HistoricalOrderResponse" />
+  <xs:complexType name="ScriptingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BacktesterDll" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="BacktesterDllVersion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommonObjectsDll" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="CommonObjectsDllVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DefaultIndicators" nillable="true" type="q38:ArrayOfstring" />
+          <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Indicators" nillable="true" type="q39:ArrayOfKeyValueOfstringArrayOfCodeParameterBaseH7NETMXZ" />
+          <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" minOccurs="0" name="Signals" nillable="true" type="q40:ArrayOfSignal" />
+          <xs:element minOccurs="0" name="ScriptingDll" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="ScriptingDllVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" minOccurs="0" name="WorkingSignals" nillable="true" type="q41:ArrayOfSignal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingResponse" nillable="true" type="tns:ScriptingResponse" />
+  <xs:complexType name="SignalDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Data" nillable="true" type="q42:ArrayOfKeyValueOfstringbase64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SignalDataResponse" nillable="true" type="tns:SignalDataResponse" />
+  <xs:complexType name="ScriptingDataSavedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+          <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Parameters" nillable="true" type="q43:ArrayOfCodeParameterBase" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingDataSavedResponse" nillable="true" type="tns:ScriptingDataSavedResponse" />
+  <xs:complexType name="ScriptingInstanceCreatedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" minOccurs="0" name="Code" nillable="true" type="q44:CodeBase" />
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element minOccurs="0" name="RequestID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingInstanceCreatedResponse" nillable="true" type="tns:ScriptingInstanceCreatedResponse" />
+  <xs:complexType name="IndicatorSeriesUpdatedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" minOccurs="0" name="Series" nillable="true" type="q45:ArrayOfSeriesForUpdate" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IndicatorSeriesUpdatedResponse" nillable="true" type="tns:IndicatorSeriesUpdatedResponse" />
+  <xs:complexType name="CodeDrawingsUpdatedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Drawings" nillable="true" type="q46:ArrayOfDrawing" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CodeDrawingsUpdatedResponse" nillable="true" type="tns:CodeDrawingsUpdatedResponse" />
+  <xs:complexType name="ScriptingMessageResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodeID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Message" nillable="true" type="q47:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingMessageResponse" nillable="true" type="tns:ScriptingMessageResponse" />
+  <xs:complexType name="ScriptingExitResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodeID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingExitResponse" nillable="true" type="tns:ScriptingExitResponse" />
+  <xs:complexType name="ScriptingInstanceUnloadedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingInstanceUnloadedResponse" nillable="true" type="tns:ScriptingInstanceUnloadedResponse" />
+  <xs:complexType name="ScriptingDataRemoveResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ScriptingType" type="tns:ScriptingType" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingDataRemoveResponse" nillable="true" type="tns:ScriptingDataRemoveResponse" />
+  <xs:complexType name="SignalActionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" type="tns:SignalAction" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="State" type="q48:SignalState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SignalActionResponse" nillable="true" type="tns:SignalActionResponse" />
+  <xs:complexType name="BacktestReportMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BacktestProgress" type="xs:float" />
+          <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="BacktestResults" nillable="true" type="q49:ArrayOfBacktestResults" />
+          <xs:element minOccurs="0" name="IsFromEarlierSession" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BacktestReportMessage" nillable="true" type="tns:BacktestReportMessage" />
+  <xs:complexType name="ScriptingReportResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportFields" nillable="true" type="tns:ArrayOfReportField" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingReportResponse" nillable="true" type="tns:ScriptingReportResponse" />
+  <xs:complexType name="ArrayOfReportField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportField" nillable="true" type="tns:ReportField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportField" nillable="true" type="tns:ArrayOfReportField" />
+  <xs:complexType name="ReportField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DBOrderEntryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DBSignalEntryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderFilledDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderFillingDelay" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderGeneratedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Side" type="q50:Side" />
+      <xs:element minOccurs="0" name="SignalGeneratedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SignalToOrderSpan" type="xs:int" />
+      <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Enums" minOccurs="0" name="Status" type="q51:Status" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="TimeInForce" type="q52:TimeInForce" />
+      <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="TradeType" type="q53:TradeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportField" nillable="true" type="tns:ReportField" />
+  <xs:complexType name="GetLastTickResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Tick" nillable="true" type="q54:Tick" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLastTickResponse" nillable="true" type="tns:GetLastTickResponse" />
+  <xs:complexType name="RegisterUCProcessorResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisterUCProcessorResponse" nillable="true" type="tns:RegisterUCProcessorResponse" />
+  <xs:complexType name="StartSignalExecutionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="AccountInfos" nillable="true" type="q55:ArrayOfAccountInfo" />
+          <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Files" nillable="true" type="q56:ArrayOfKeyValueOfstringbase64Binary" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Portfolios" nillable="true" type="q57:ArrayOfPortfolio" />
+          <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="SignalInitParams" nillable="true" type="q58:SignalInitParams" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartSignalExecutionResponse" nillable="true" type="tns:StartSignalExecutionResponse" />
+  <xs:complexType name="StopSignalExecutionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StopSignalExecutionResponse" nillable="true" type="tns:StopSignalExecutionResponse" />
+  <xs:complexType name="ScriptingReportRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FromTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScriptingReportRequest" nillable="true" type="tns:ScriptingReportRequest" />
+  <xs:complexType name="GetLastTickRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Datafeed" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLastTickRequest" nillable="true" type="tns:GetLastTickRequest" />
+  <xs:complexType name="StartedSignalExecutionRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessage">
+        <xs:sequence>
+          <xs:element xmlns:q59="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Alerts" nillable="true" type="q59:ArrayOfstring" />
+          <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="CodeParameterBases" nillable="true" type="q60:ArrayOfCodeParameterBase" />
+          <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Drawings" nillable="true" type="q61:ArrayOfDrawing" />
+          <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="Selections" nillable="true" type="q62:ArrayOfSelection" />
+          <xs:element minOccurs="0" name="SignalFullName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SignalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/CommonObjects" minOccurs="0" name="SignalState" type="q63:SignalState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartedSignalExecutionRequest" nillable="true" type="tns:StartedSignalExecutionRequest" />
+  <xs:complexType name="LoginResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginResponse" nillable="true" type="tns:LoginResponse" />
+  <xs:complexType name="TradingServerException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TradingServerException" nillable="true" type="tns:TradingServerException" />
+</xs:schema>

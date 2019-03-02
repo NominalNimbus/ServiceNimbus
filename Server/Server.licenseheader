@@ -1,0 +1,34 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+/* 
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus 
+*/
+
+extensions: .aspx .ascx
+<%-- 
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+--%>
+
+extensions: .vb
+'This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus.
+
+extensions:  .xml .config .xsd
+<!--
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+-->

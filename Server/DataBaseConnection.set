@@ -1,0 +1,5 @@
+Initial Catalog=TradingServer;
+Integrated Security=true;
+Connect TimeOut=15;
+Encrypt=False;
+TrustServerCertificate=False

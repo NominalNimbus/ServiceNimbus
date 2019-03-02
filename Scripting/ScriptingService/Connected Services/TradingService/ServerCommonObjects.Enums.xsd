@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+-->
+
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Enums" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Enums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Filled" />
+      <xs:enumeration value="Cancelled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Status" nillable="true" type="tns:Status" />
+</xs:schema>

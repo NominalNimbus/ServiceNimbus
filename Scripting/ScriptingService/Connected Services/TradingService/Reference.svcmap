@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4dca19fa-4da5-4d99-9f20-fbbfb5e1ec83" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1:8732/TradingService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="301db190-4f98-42b9-93d0-d9861f77bd43" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="73bd546a-3753-4623-bc1e-ab597b4c33da" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c433dc2e-61b0-4ea7-b1eb-2d8c3fbb8820" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="ServerCommonObjects.xsd" MetadataType="Schema" ID="579df8e9-031b-4a6f-8f8c-99e48d901f63" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="CommonObjects.xsd" MetadataType="Schema" ID="674fee86-7449-495b-9135-035514886213" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="f0a2c810-90fa-48be-8d46-2c12fec6cc22" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="ServerCommonObjects.Classes.xsd" MetadataType="Schema" ID="6736b033-2aa9-4daa-9f26-b6335fa4d618" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="ServerCommonObjects.Enums.xsd" MetadataType="Schema" ID="34dc9960-0d16-4443-abc8-31d164acc571" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+    <MetadataFile FileName="System.Drawing.xsd" MetadataType="Schema" ID="459157f1-ae31-4107-9346-24acc1c057a0" SourceId="1" SourceUrl="http://127.0.0.1:8732/TradingService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

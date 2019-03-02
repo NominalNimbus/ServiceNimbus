@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TradingServerWCFService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IServerServiceHost_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/CommonObjects" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Classes" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServerCommonObjects.Enums" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWCFService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_Login_TradingServerExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/ServerCommonObjects" name="detail" element="q1:TradingServerException" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_LogOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOut" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_MessageIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:MessageIn" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RegisterProcessor_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterProcessor" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RegisterProcessor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterProcessorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RegisterProcessor_TradingServerExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/ServerCommonObjects" name="detail" element="q2:TradingServerException" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_MessageOut_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MessageOut" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="IWCFService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Login" message="tns:IWCFService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/LoginResponse" message="tns:IWCFService_Login_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWCFService/LoginTradingServerExceptionFault" name="TradingServerExceptionFault" message="tns:IWCFService_Login_TradingServerExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="true" name="LogOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/LogOut" message="tns:IWCFService_LogOut_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="MessageIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/MessageIn" message="tns:IWCFService_MessageIn_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RegisterProcessor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RegisterProcessor" message="tns:IWCFService_RegisterProcessor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RegisterProcessorResponse" message="tns:IWCFService_RegisterProcessor_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWCFService/RegisterProcessorTradingServerExceptionFault" name="TradingServerExceptionFault" message="tns:IWCFService_RegisterProcessor_TradingServerExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="MessageOut">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/MessageOut" message="tns:IWCFService_MessageOut_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IServerServiceHost" type="tns:IWCFService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IServerServiceHost_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="TradingServerExceptionFault">
+        <soap12:fault use="literal" name="TradingServerExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/LogOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MessageIn">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/MessageIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterProcessor">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/RegisterProcessor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="TradingServerExceptionFault">
+        <soap12:fault use="literal" name="TradingServerExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MessageOut">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/MessageOut" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TradingServerWCFService">
+    <wsdl:port name="NetTcpBinding_IServerServiceHost" binding="tns:NetTcpBinding_IServerServiceHost">
+      <soap12:address location="net.tcp://127.0.0.1:4504/TradingService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://127.0.0.1:4504/TradingService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

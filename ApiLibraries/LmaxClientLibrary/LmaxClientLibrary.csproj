@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{302EAED3-14CB-4177-A592-E707A71F97CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.Lmax</RootNamespace>
+    <AssemblyName>LmaxClientLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\..\Server\bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Server\bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Account\AccountDetails.cs" />
+    <Compile Include="Api\Account\AccountStateEvent.cs" />
+    <Compile Include="Api\Account\AccountStateRequest.cs" />
+    <Compile Include="Api\Account\AccountSubscriptionRequest.cs" />
+    <Compile Include="Api\Account\HeartbeatRequest.cs" />
+    <Compile Include="Api\Account\HeartbeatSubscriptionRequest.cs" />
+    <Compile Include="Api\Internal\DateTimeUtil.cs" />
+    <Compile Include="Api\Internal\Events\AccountStateBuilder.cs" />
+    <Compile Include="Api\Internal\Protocol\AccountStateEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\HistoricMarketDataEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\OrderBookStatusEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\HeartbeatEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\SearchResponseHandler.cs" />
+    <Compile Include="Api\Internal\ListHandler.cs" />
+    <Compile Include="Api\Internal\UnexpectedHttpStatusCodeException.cs" />
+    <Compile Include="Api\Internal\Xml\IStructuredWriter.cs" />
+    <Compile Include="Api\Internal\Xml\XmlStructuredWriter.cs" />
+    <Compile Include="Api\LogoutRequest.cs" />
+    <Compile Include="Api\FailureResponse.cs" />
+    <Compile Include="Api\Internal\Connection.cs" />
+    <Compile Include="Api\Internal\EventStreamHandler.cs" />
+    <Compile Include="Api\Internal\Events\ExecutionBuilder.cs" />
+    <Compile Include="Api\Internal\Events\OrderBuilder.cs" />
+    <Compile Include="Api\Internal\Events\PositionBuilder.cs" />
+    <Compile Include="Api\Internal\HttpInvoker.cs" />
+    <Compile Include="Api\Internal\IConnection.cs" />
+    <Compile Include="Api\Internal\ISaxContentHandler.cs" />
+    <Compile Include="Api\Internal\IHttpInvoker.cs" />
+    <Compile Include="Api\Internal\DefaultHandler.cs" />
+    <Compile Include="Api\Internal\Handler.cs" />
+    <Compile Include="Api\Internal\Protocol\PositionEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\ExecutionEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\EventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\InstructionRejectedEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\LoginResponseHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\OrderBookEventHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\OrderResponseHandler.cs" />
+    <Compile Include="Api\Internal\Protocol\OrderStateEventHandler.cs" />
+    <Compile Include="Api\Internal\SaxContentHandler.cs" />
+    <Compile Include="Api\Internal\Session.cs" />
+    <Compile Include="Api\ISession.cs" />
+    <Compile Include="Api\LmaxApi.cs" />
+    <Compile Include="Api\LoginRequest.cs" />
+    <Compile Include="Api\MarketData\AggregateHistoricMarketDataRequest.cs" />
+    <Compile Include="Api\MarketData\IHistoricMarketDataRequest.cs" />
+    <Compile Include="Api\MarketData\TopOfBookHistoricMarketDataRequest.cs" />
+    <Compile Include="Api\OrderBook\OrderBookStatusSubscriptionRequest.cs" />
+    <Compile Include="Api\OrderBook\OrderBookStatusEvent.cs" />
+    <Compile Include="Api\OrderBook\HistoricContentType.cs" />
+    <Compile Include="Api\MarketData\HistoricMarketDataSubscriptionRequest.cs" />
+    <Compile Include="Api\OrderBook\Instrument.cs" />
+    <Compile Include="Api\OrderBook\OrderBookEvent.cs" />
+    <Compile Include="Api\OrderBook\OrderBookSubscriptionRequest.cs" />
+    <Compile Include="Api\OrderBook\PricePoint.cs" />
+    <Compile Include="Api\OrderBook\SearchRequest.cs" />
+    <Compile Include="Api\Order\AmendStopsRequest.cs" />
+    <Compile Include="Api\Order\CancelOrderRequest.cs" />
+    <Compile Include="Api\Order\Execution.cs" />
+    <Compile Include="Api\Order\ExecutionSubscriptionRequest.cs" />
+    <Compile Include="Api\Order\IOrderSpecification.cs" />
+    <Compile Include="Api\Order\LimitOrderSpecification.cs" />
+    <Compile Include="Api\Order\MarketOrderSpecification.cs" />
+    <Compile Include="Api\Order\Order.cs" />
+    <Compile Include="Api\Order\OrderSpecification.cs" />
+    <Compile Include="Api\Order\OrderSubscriptionRequest.cs" />
+    <Compile Include="Api\Order\StopOrderSpecification.cs" />
+    <Compile Include="Api\Position\PositionEvent.cs" />
+    <Compile Include="Api\IRequest.cs" />
+    <Compile Include="Api\Position\PositionSubscriptionRequest.cs" />
+    <Compile Include="Api\Reject\InstructionRejectedEvent.cs" />
+    <Compile Include="Api\Internal\Response.cs" />
+    <Compile Include="Api\Internal\SaxParser.cs" />
+    <Compile Include="Api\Internal\IXmlParser.cs" />
+    <Compile Include="Api\ISubscriptionRequest.cs" />
+    <Compile Include="Api\SubscriptionRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

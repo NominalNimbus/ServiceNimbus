@@ -1,0 +1,31 @@
+/* 
+ * This project is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/
+ * Any copyright is dedicated to the NominalNimbus.
+ * https://github.com/NominalNimbus 
+*/
+
+namespace Com.Lmax.Api.Internal.Protocol
+{
+    public class EventHandler : Handler
+    {
+        private readonly OrderBookEventHandler _orderBookEventHandler;
+
+        // exposed for testing
+        public EventHandler(OrderBookEventHandler orderBookEventHandler)
+        {
+            _orderBookEventHandler = orderBookEventHandler;
+        }
+
+        public override Handler GetHandler(string qName)
+        {
+            if (qName == _orderBookEventHandler.ElementName)
+            {
+                return _orderBookEventHandler;
+            }
+            return this;
+        }
+    }
+}
+

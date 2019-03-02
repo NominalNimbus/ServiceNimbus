@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This project is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/
+Any copyright is dedicated to the NominalNimbus.
+https://github.com/NominalNimbus
+-->
+
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/CommonObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CommonObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Security">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DataFeed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Digit" type="xs:int" />
+      <xs:element minOccurs="0" name="MarginRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MarketClose" type="ser:duration" />
+      <xs:element minOccurs="0" name="MarketOpen" type="ser:duration" />
+      <xs:element minOccurs="0" name="MaxPosition" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceIncrement" type="xs:decimal" />
+      <xs:element minOccurs="0" name="QtyIncrement" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SecurityId" type="xs:int" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitOfMeasure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Security" nillable="true" type="tns:Security" />
+  <xs:complexType name="Selection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BarCount" type="xs:int" />
+      <xs:element minOccurs="0" name="BidAsk" type="tns:PriceType" />
+      <xs:element minOccurs="0" name="DataFeed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="From" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IncludeWeekendData" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Level" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Leverage" type="xs:int" />
+      <xs:element minOccurs="0" name="MarketDataSlot" type="xs:int" />
+      <xs:element minOccurs="0" name="Slippage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeFactor" type="xs:int" />
+      <xs:element minOccurs="0" name="Timeframe" type="tns:Timeframe" />
+      <xs:element minOccurs="0" name="To" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Selection" nillable="true" type="tns:Selection" />
+  <xs:simpleType name="PriceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="Bid" />
+      <xs:enumeration value="Ask" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PriceType" nillable="true" type="tns:PriceType" />
+  <xs:simpleType name="Timeframe">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Tick">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Minute">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hour">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Day">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Month">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Timeframe" nillable="true" type="tns:Timeframe" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvgFillPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BrokerID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrokerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelledQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ClosingQty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Commission" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrentPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DataFeedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerSide" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FilledDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FilledQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpenDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OpenQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpeningQty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OrderSide" type="tns:Side" />
+      <xs:element minOccurs="0" name="OrderType" type="tns:TradeType" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PipProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PlacedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Profit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SLOffset" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SignalID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TPOffset" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimeInForce" type="tns:TimeInForce" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:simpleType name="Side">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Buy" />
+      <xs:enumeration value="Sell" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Side" nillable="true" type="tns:Side" />
+  <xs:simpleType name="TradeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Market" />
+      <xs:enumeration value="Limit" />
+      <xs:enumeration value="Stop" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TradeType" nillable="true" type="tns:TradeType" />
+  <xs:simpleType name="TimeInForce">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FillOrKill" />
+      <xs:enumeration value="ImmediateOrCancel" />
+      <xs:enumeration value="GoodForDay" />
+      <xs:enumeration value="GoodTilCancelled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TimeInForce" nillable="true" type="tns:TimeInForce" />
+  <xs:complexType name="ArrayOfAccountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountInfo" nillable="true" type="tns:AccountInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountInfo" nillable="true" type="tns:ArrayOfAccountInfo" />
+  <xs:complexType name="AccountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BrokerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataFeedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Equity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Margin" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Profit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountInfo" nillable="true" type="tns:AccountInfo" />
+  <xs:complexType name="Portfolio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accounts" nillable="true" type="tns:ArrayOfPortfolioAccount" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Strategies" nillable="true" type="tns:ArrayOfPortfolioStrategy" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Portfolio" nillable="true" type="tns:Portfolio" />
+  <xs:complexType name="ArrayOfPortfolioAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PortfolioAccount" nillable="true" type="tns:PortfolioAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortfolioAccount" nillable="true" type="tns:ArrayOfPortfolioAccount" />
+  <xs:complexType name="PortfolioAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrokerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortfolioAccount" nillable="true" type="tns:PortfolioAccount" />
+  <xs:complexType name="ArrayOfPortfolioStrategy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PortfolioStrategy" nillable="true" type="tns:PortfolioStrategy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortfolioStrategy" nillable="true" type="tns:ArrayOfPortfolioStrategy" />
+  <xs:complexType name="PortfolioStrategy">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataFeeds" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="ExposedBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Signals" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortfolioStrategy" nillable="true" type="tns:PortfolioStrategy" />
+  <xs:complexType name="ColorValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColorString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ColorValue" nillable="true" type="tns:ColorValue" />
+  <xs:complexType name="ArrayOfCodeParameterBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CodeParameterBase" nillable="true" type="tns:CodeParameterBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodeParameterBase" nillable="true" type="tns:ArrayOfCodeParameterBase" />
+  <xs:complexType name="CodeParameterBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodeParameterBase" nillable="true" type="tns:CodeParameterBase" />
+  <xs:complexType name="BacktestSettings">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BarData" nillable="true" type="q3:ArrayOfKeyValueOfSelectionArrayOfBarQE_PnJckW" />
+      <xs:element minOccurs="0" name="BarsBack" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InitialBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Risk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransactionCosts" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BacktestSettings" nillable="true" type="tns:BacktestSettings" />
+  <xs:complexType name="ArrayOfBar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bar" nillable="true" type="tns:Bar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBar" nillable="true" type="tns:ArrayOfBar" />
+  <xs:complexType name="Bar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CloseAsk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CloseBid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HighAsk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HighBid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LowAsk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LowBid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpenAsk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpenBid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VolumeAsk" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VolumeBid" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bar" nillable="true" type="tns:Bar" />
+  <xs:simpleType name="SignalState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Stopped" />
+      <xs:enumeration value="Running" />
+      <xs:enumeration value="RunningSimulated" />
+      <xs:enumeration value="Backtesting" />
+      <xs:enumeration value="BacktestingPaused" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SignalState" nillable="true" type="tns:SignalState" />
+  <xs:complexType name="ArrayOfSelection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Selection" nillable="true" type="tns:Selection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSelection" nillable="true" type="tns:ArrayOfSelection" />
+  <xs:complexType name="StrategyParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExposedBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StrategyID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StrategyParams" nillable="true" type="tns:StrategyParams" />
+  <xs:complexType name="IntParam">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxValue" type="xs:int" />
+          <xs:element minOccurs="0" name="MinValue" type="xs:int" />
+          <xs:element minOccurs="0" name="StartValue" type="xs:int" />
+          <xs:element minOccurs="0" name="Step" type="xs:int" />
+          <xs:element minOccurs="0" name="StopValue" type="xs:int" />
+          <xs:element minOccurs="0" name="Value" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntParam" nillable="true" type="tns:IntParam" />
+  <xs:complexType name="DoubleParam">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxValue" type="xs:double" />
+          <xs:element minOccurs="0" name="MinValue" type="xs:double" />
+          <xs:element minOccurs="0" name="StartValue" type="xs:double" />
+          <xs:element minOccurs="0" name="Step" type="xs:double" />
+          <xs:element minOccurs="0" name="StopValue" type="xs:double" />
+          <xs:element minOccurs="0" name="Value" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoubleParam" nillable="true" type="tns:DoubleParam" />
+  <xs:complexType name="ColorParam">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="tns:ColorValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ColorParam" nillable="true" type="tns:ColorParam" />
+  <xs:complexType name="StringParam">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeParameterBase">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllowedValues" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringParam" nillable="true" type="tns:StringParam" />
+  <xs:complexType name="SeriesParam">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Color" nillable="true" type="tns:ColorValue" />
+          <xs:element minOccurs="0" name="Thickness" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SeriesParam" nillable="true" type="tns:SeriesParam" />
+  <xs:simpleType name="DrawShapeStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DRAW_LINE" />
+      <xs:enumeration value="DRAW_SECTION" />
+      <xs:enumeration value="DRAW_HISTOGRAM" />
+      <xs:enumeration value="DRAW_ARROW" />
+      <xs:enumeration value="DRAW_ZIGZAG" />
+      <xs:enumeration value="DRAW_NONE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DrawShapeStyle" nillable="true" type="tns:DrawShapeStyle" />
+  <xs:simpleType name="DrawStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STYLE_SOLID" />
+      <xs:enumeration value="STYLE_DASH" />
+      <xs:enumeration value="STYLE_DOT" />
+      <xs:enumeration value="STYLE_DASHDOT" />
+      <xs:enumeration value="STYLE_DASHDOTDOT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DrawStyle" nillable="true" type="tns:DrawStyle" />
+  <xs:simpleType name="StartMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NewQuote" />
+      <xs:enumeration value="NewBar" />
+      <xs:enumeration value="Once" />
+      <xs:enumeration value="Periodic" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StartMethod" nillable="true" type="tns:StartMethod" />
+  <xs:complexType name="Series">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArrowType" type="xs:int" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="tns:ColorValue" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Style" type="tns:DrawShapeStyle" />
+      <xs:element minOccurs="0" name="Thickness" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" type="tns:DrawStyle" />
+      <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ArrayOfSeriesValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Series" nillable="true" type="tns:Series" />
+  <xs:complexType name="ArrayOfSeriesValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeriesValue" nillable="true" type="tns:SeriesValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeriesValue" nillable="true" type="tns:ArrayOfSeriesValue" />
+  <xs:complexType name="SeriesValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeriesValue" nillable="true" type="tns:SeriesValue" />
+  <xs:complexType name="ArrayOfDrawing">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Drawing" nillable="true" type="tns:Drawing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDrawing" nillable="true" type="tns:ArrayOfDrawing" />
+  <xs:complexType name="Drawing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="tns:ColorValue" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Thickness" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" type="tns:DrawStyle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Drawing" nillable="true" type="tns:Drawing" />
+  <xs:complexType name="ArrayOfSeries">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Series" nillable="true" type="tns:Series" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeries" nillable="true" type="tns:ArrayOfSeries" />
+  <xs:complexType name="ArrayOfSecurity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Security" nillable="true" type="tns:Security" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecurity" nillable="true" type="tns:ArrayOfSecurity" />
+  <xs:complexType name="ArrayOfTick">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tick" nillable="true" type="tns:Tick" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTick" nillable="true" type="tns:ArrayOfTick" />
+  <xs:complexType name="Tick">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ask" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AskSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Bid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BidSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DataFeed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Level2" nillable="true" type="tns:ArrayOfMarketLevel2" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="tns:Security" />
+      <xs:element minOccurs="0" name="Volume" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tick" nillable="true" type="tns:Tick" />
+  <xs:complexType name="ArrayOfMarketLevel2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MarketLevel2" nillable="true" type="tns:MarketLevel2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMarketLevel2" nillable="true" type="tns:ArrayOfMarketLevel2" />
+  <xs:complexType name="MarketLevel2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AskPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AskSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BidPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BidSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DailyLevel2AskSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DailyLevel2BidSize" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DomLevel" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MarketLevel2" nillable="true" type="tns:MarketLevel2" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="ArrayOfPortfolio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Portfolio" nillable="true" type="tns:Portfolio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortfolio" nillable="true" type="tns:ArrayOfPortfolio" />
+  <xs:complexType name="ArrayOfPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Position" nillable="true" type="tns:Position" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPosition" nillable="true" type="tns:ArrayOfPosition" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrokerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DataFeedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PipProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PositionSide" type="tns:Side" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Profit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
+  <xs:complexType name="ArrayOfBacktestResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BacktestResults" nillable="true" type="tns:BacktestResults" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBacktestResults" nillable="true" type="tns:ArrayOfBacktestResults" />
+  <xs:complexType name="BacktestResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Index" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parameters" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SignalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Slot" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Summaries" nillable="true" type="tns:ArrayOfBacktestSummary" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalProgress" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BacktestResults" nillable="true" type="tns:BacktestResults" />
+  <xs:complexType name="ArrayOfBacktestSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BacktestSummary" nillable="true" type="tns:BacktestSummary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBacktestSummary" nillable="true" type="tns:ArrayOfBacktestSummary" />
+  <xs:complexType name="BacktestSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnnualizedSortinoRatioMAR5" type="xs:double" />
+      <xs:element minOccurs="0" name="CalmarRatio" type="xs:double" />
+      <xs:element minOccurs="0" name="CompoundMonthlyROR" type="xs:double" />
+      <xs:element minOccurs="0" name="DownsideDeviationMar10" type="xs:double" />
+      <xs:element minOccurs="0" name="LargestLoss" type="xs:double" />
+      <xs:element minOccurs="0" name="LargestProfit" type="xs:double" />
+      <xs:element minOccurs="0" name="MaximumDrawDown" type="xs:double" />
+      <xs:element minOccurs="0" name="MaximumDrawDownMonteCarlo" type="xs:double" />
+      <xs:element minOccurs="0" name="NumberOfLosingTrades" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfProfitableTrades" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfTradeSignals" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfTrades" type="xs:int" />
+      <xs:element minOccurs="0" name="PercentProfit" type="xs:double" />
+      <xs:element minOccurs="0" name="RiskRewardRatio" type="xs:double" />
+      <xs:element minOccurs="0" name="Selection" nillable="true" type="tns:Selection" />
+      <xs:element minOccurs="0" name="SharpeRatio" type="xs:double" />
+      <xs:element minOccurs="0" name="SortinoRatioMAR5" type="xs:double" />
+      <xs:element minOccurs="0" name="StandardDeviation" type="xs:double" />
+      <xs:element minOccurs="0" name="StandardDeviationAnnualized" type="xs:double" />
+      <xs:element minOccurs="0" name="SterlingRatioMAR5" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalLoss" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalProfit" type="xs:double" />
+      <xs:element minOccurs="0" name="TradesCompressed" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ValueAddedMonthlyIndex" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BacktestSummary" nillable="true" type="tns:BacktestSummary" />
+  <xs:complexType name="SignalInitParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BacktestSettings" nillable="true" type="tns:BacktestSettings" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parameters" nillable="true" type="tns:ArrayOfCodeParameterBase" />
+      <xs:element minOccurs="0" name="Selections" nillable="true" type="tns:ArrayOfSelection" />
+      <xs:element minOccurs="0" name="State" type="tns:SignalState" />
+      <xs:element minOccurs="0" name="StrategyParameters" nillable="true" type="tns:StrategyParams" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignalInitParams" nillable="true" type="tns:SignalInitParams" />
+  <xs:complexType name="ArrayOfOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Output" nillable="true" type="tns:Output" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOutput" nillable="true" type="tns:ArrayOfOutput" />
+  <xs:complexType name="Output">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WriterName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Output" nillable="true" type="tns:Output" />
+</xs:schema>
