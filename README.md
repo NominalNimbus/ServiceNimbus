@@ -35,6 +35,7 @@ To build and run ServiceNimbus follow this steps:
 + execute "script.sql" and check if tabels where created  
 + build ServiceNimbus solution in Visual Studio  
 + follow the steps from "How To.doc" for further setup instructions  
++ **Video tutorials available here: https://www.youtube.com/playlist?list=PLbiaIO7sG7FYlrgOV1XLHrnaufJ7fK6Hx**  
   
   
 ![servicenimbus](https://user-images.githubusercontent.com/44921994/53283180-b70d9280-3742-11e9-8172-5fbe6f56d14b.png)  
