@@ -52,7 +52,8 @@ How to rund TacticNimbus:
 + in addition you need to intstall RabbitMQ and Erlang
 + after ServiceNimbus build, go to ScriptingService target folder  
 + optional: copy the target folder to any place of you choice for better overview and maintainace
-+ run ScriptingService.exe
++ run ScriptingService.exe  
++ **Video tutorials available here: https://www.youtube.com/playlist?list=PLbiaIO7sG7FYlrgOV1XLHrnaufJ7fK6Hx**  
 .  
 .  
 .  
