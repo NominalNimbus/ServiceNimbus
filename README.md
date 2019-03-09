@@ -11,8 +11,8 @@
 **+ .net Scripting Library on client side**
 **+ Server Side headless deployment of trading algos**
 **+ Backtesting Engine**  
-**+ Marging Broker Simulation**  
-**+ Non Marging Broker Simulation**  
+**+ Marging Broker and Non-Marging Broker Simulation**  
+**+ Combine real market datafeed with Broker-Account Simulation to test your trading ideas**  
 **+ LMAX API for Demo & Live Trading**  
 **+ Poloniex API for Live Trading**  
   
