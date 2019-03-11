@@ -8,9 +8,10 @@
 ########################################################################
   
 **_NominalNimbus_ project is a client <=> server Trading Platform with stron focus on Algorithmic Trading with build in features like:**  
-**+ .net Scripting Library on client side**
-**+ Server Side headless deployment of trading algos**
+**+ .net Scripting Library on client side**  
+**+ Server Side headless deployment of trading algos**  
 **+ Backtesting Engine**  
+**+ Periodically Backtest your Trading Algo during runtime to adjust its parameters on actual market situations**  
 **+ Marging Broker and Non-Marging Broker Simulation**  
 **+ Combine real market datafeed with Broker-Account Simulation to test your trading ideas**  
 **+ LMAX API for Demo & Live Trading**  
