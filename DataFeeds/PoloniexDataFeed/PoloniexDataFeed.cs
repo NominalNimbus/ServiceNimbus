@@ -265,10 +265,17 @@ namespace PoloniexDataFeed
 
         private void Api_OnSessionError(object sender, string e)
         {
+            Console.WriteLine($"{DateTime.Now}  Poloniex dataFeed on session Error: {e}");
             if (e.StartsWith("Reconnecting"))
                 Logger.Info(e);
             else
                 Logger.Error(e);
+
+            if (IsStarted)
+            {
+                Stop();
+                Start();
+            }
         }
 
         private void Api_OnOrderBookUpdate(object sender, PoloniexAPI.LiveTools.OrderBookItem e)

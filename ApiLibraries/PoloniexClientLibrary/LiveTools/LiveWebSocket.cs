@@ -90,7 +90,9 @@ namespace PoloniexAPI.LiveTools
 
         private void _webSocket_Closed(object sender, EventArgs e)
         {
+            Console.WriteLine($"{DateTime.Now}  Poloniex _webSocket_Closed");
             IsConnected = false;
+            OnSessionError?.Invoke(this, "Web socket closed");
         }
 
         private void _webSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
@@ -135,6 +137,8 @@ namespace PoloniexAPI.LiveTools
 
         private void _webSocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
         {
+            Console.WriteLine($"{DateTime.Now}  Poloniex _webSocket_Error");
+
             IsConnected = false;
             OnSessionError?.Invoke(this, e.Exception.Message);
         }
